@@ -1,0 +1,65 @@
+{
+  "name": "live-sample-app",
+  "version": "0.3.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "npm run build && npm run serve",
+    "test": "karma start --singleRun",
+    "tdd": "karma start",
+    "watch": "watch 'npm run tsc && npm run babel' ./src & npm run watchify & npm run serve",
+    "serve": "serve . -p 9696",
+    "lint": "eslint ./src",
+    "build": "npm run tsc && npm run babel && npm run browserify",
+    "tsc": "tsc src/**/*.ts src/*.ts --outDir build/src --module commonjs --sourceMap && node ./source-map-inliner.js",
+    "babel": "babel src/**/*.jsx src/*.jsx -s inline -d build",
+    "browserify": "browserify build/src/index.js -d -s App -o dist/live-sample-app.js --noparse node_modules/react/react.js",
+    "watchify": "watchify build/src/index.js -d -s App -o dist/live-sample-app.js --noparse node_modules/react/react.js",
+    "patch": "npm version patch -m \"bump v%s !\"",
+    "minor": "npm version minor -m \"bump v%s !!\"",
+    "major": "npm version major -m \"bump v%s !!!\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahomu/es6-Kameita"
+  },
+  "author": "ahomu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ahomu/es6-Kameita/issues"
+  },
+  "homepage": "https://github.com/ahomu/es6-Kameita",
+  "dependencies": {
+    "react": "^0.13.1"
+  },
+  "devDependencies": {
+    "babel": "^5.1.10",
+    "babel-eslint": "^3.0.0",
+    "babelify": "^6.0.0",
+    "browserify": "~6.3.3",
+    "browserify-istanbul": "^0.2.1",
+    "combine-source-map": "^0.5.0",
+    "convert-source-map": "^1.0.0",
+    "eslint": "^0.17.1",
+    "espowerify": "^0.10.0",
+    "glob": "^5.0.5",
+    "isparta": "^3.0.3",
+    "karma": "^0.12.31",
+    "karma-browserify": "^4.1.2",
+    "karma-chrome-launcher": "^0.1.8",
+    "karma-cli": "0.0.4",
+    "karma-coverage": "^0.3.1",
+    "karma-mocha": "^0.1.10",
+    "mocha": "~2.0.1",
+    "power-assert": "~0.10.0",
+    "serve": "^1.4.0",
+    "testem": "~0.7.1",
+    "tsify": "^0.8.1",
+    "typescript": "^1.5.0-alpha",
+    "watch": "^0.16.0",
+    "watchify": "^3.1.1"
+  }
+}
