@@ -2,3 +2,5 @@ node_modules
 temp
 dist
 build
+typings/*
+!typings/common

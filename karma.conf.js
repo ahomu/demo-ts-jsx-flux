@@ -1,8 +1,5 @@
 'use strict';
 
-var istanbul = require('browserify-istanbul');
-var isparta = require('isparta');
-
 module.exports = function(config) {
   config.set({
     frameworks: ['browserify', 'mocha'],
@@ -17,11 +14,9 @@ module.exports = function(config) {
 
     browserify: {
       transform: [
-        //istanbul({
-        //  instrumenter: isparta
-        //}),
         'espowerify'
-      ]
+      ],
+      debug : true
     },
 
     browsers: ['Chrome'],
